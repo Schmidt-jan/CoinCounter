@@ -9,13 +9,13 @@ public class Coincounter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
-                This program prints out the number of each coin needed for the change
+                This program prints out the number of each coin needed for the change in Euro
                 The input uses the form '$.$$'
                 Example : '6.25' or '0.99'
                 """);
 
         while (true) {
-            System.out.println("Enter the amount in Euro: ");
+            System.out.println("Enter the amount in euro: ");
 
             String input = scanner.nextLine().trim();
             if (input.equals("exit")) {
@@ -30,16 +30,25 @@ public class Coincounter {
         }
     }
 
-    private static int euroToCents(String input) {
+    /**
+     *
+     * @param input as String in Form of "^(0|([1-9][0-9]*))\\.\\d\\d$"
+     * @return amount in cent
+     * @throws AssertionError if input doesn't match the regex
+     */
+    public static int euroToCents(String input) {
+        assert(input.matches(regexMoney));
         input = input.replace(".", "");
         return Integer.parseInt(input);
     }
 
     /**
-     * @param cents input
+     * @param cents input in cent. Only positive digits > 0 are allowed
      * @return a ArrayList of type CoinVal with the minimum needed number of Coins
+     * @throws AssertionError if input of cents <= 0
      */
-    private static List<CoinVal> calcCoins(int cents) {
+    public static List<CoinVal> calcCoins(int cents) {
+        assert(cents > 0);
         List<CoinVal> list = new ArrayList<>();
 
         for (int coinVal : euroCoins) {
