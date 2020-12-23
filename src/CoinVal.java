@@ -30,7 +30,6 @@ public class CoinVal {
 
     @Override
     public String toString() {
-        String unity = "Euro";
         if (val >= 100)
             return "" + numberOf + "x " + val  / 100 + " Euro";
         else return "" + numberOf + "x " + val + " Cent";
