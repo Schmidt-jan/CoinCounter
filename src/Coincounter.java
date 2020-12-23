@@ -9,9 +9,11 @@ public class Coincounter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
-                This program prints out the number of each coin needed for the change in Euro
-                The input uses the form '$.$$'
-                Example : '6.25' or '0.99'
+                This program prints out the number of each coin needed for the change.
+                All in/-outputs are in Euro. The input uses the form '$.$$'.
+                Example : '6.25' or '0.99' or '55.00'
+                An input with more than 10 characters is not allowed.
+                Close the program with 'exit'
                 """);
 
         while (true) {
